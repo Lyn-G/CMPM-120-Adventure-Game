@@ -132,6 +132,19 @@ class SecondScene extends Phaser.Scene {
             ease: "Linear",
             delay: 1000
         })
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            alpha: 0,
+            duration: 1000,
+            ease: "Linear",
+            delay: 3200, 
+            onComplete: function () {
+              // Switch to the next scene after the fade-out is complete
+              this.scene.start("ThirdScene");
+            },
+            callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
+          });
     }
     update(){}
 }
@@ -140,8 +153,64 @@ class ThirdScene extends Phaser.Scene {
     constructor(){
         super('ThirdScene');
     }
-    create(){}
-    preload(){}
+    preload(){
+        this.load.image('main', 'main menu.png');
+    }
+    create(){
+        this.graphics = this.add.graphics();
+        this.graphics.fillGradientStyle(0x099773, 0x39B18D, 0x1CA17D,0x26A783, 0.8, 1, 0.3, 0.1); 
+        let idk = this.graphics.fillCircle(400, 100,
+            200, 278,
+            340, 430,
+            650, 80);
+        idk.setScale(0.1);
+        idk.setPosition(225,125);
+
+        let main_menu = this.add.image(550,300,"main");
+        main_menu.setScale(0.35);
+        let y = 100;
+        
+        let text = "Play\nOptions\nCredits\nSettings";
+        let lines = text.split("\n");
+
+        for (let i = 0; i < lines.length; i++){
+            let line = this.add.text(30, y, lines[i], {font: "60px Brush Script MT", fill: "#ffffff"})
+            line.alpha = 0;
+
+            this.tweens.add({
+                targets: line,
+                alpha: 1,
+                duration: 1000,
+                ease: "Linear",
+                delay: i *500,
+            });
+
+            y += 100;
+        }
+
+        this.tweens.add({
+            targets: main_menu,
+            duration: 2000, // duration of the tween in milliseconds
+            scale: 0.5, // the scale of the image at the end of the tween
+            alpha: 0, // the alpha value of the image at the end of the tween
+            delay: 2500,
+            ease: 'Linear',
+            onComplete: function () {
+                image.destroy(); // remove the image from the scene after the tween is complete
+            }
+        });
+
+       this.tweens.add({
+        targets: idk,
+        alpha: 0,
+        duration: 500,
+        ease: 'Linear',
+        repeat: -1,
+        yoyo: true,
+        delay: 500
+       });
+    }
+    
 }
 
 let config = {
