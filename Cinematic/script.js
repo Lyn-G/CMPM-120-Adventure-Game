@@ -205,7 +205,7 @@ class ThirdScene extends Phaser.Scene {
         alpha: 0,
         duration: 500,
         ease: 'Linear',
-        repeat: -1,
+        loop: -1,
         yoyo: true,
         delay: 500
        });
