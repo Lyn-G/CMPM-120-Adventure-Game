@@ -138,20 +138,28 @@ class SecondScene extends Phaser.Scene {
             delay: 1000
         })
 
+        const rect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x000000);
+        rect.setOrigin(0, 0);
+        rect.setAlpha(0);
+
         this.tweens.add({
-            targets: this.cameras.main,
-            alpha: 0,
+            targets: rect,
+            alpha: 1,
+            delay: 3000,
             duration: 1000,
             ease: "Linear",
-            delay: 3200, 
             onComplete: function () {
-              // Switch to the next scene after the fade-out is complete
-              this.scene.start("ThirdScene");
+                // Switch to the next scene after the fade-out is complete
+                this.scene.start("ThirdScene");
             },
-            callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
-          });
+            callbackScope: this
+        });
+
+          
     }
-    update(){}
+    update(){
+        this.cameras.main.backgroundColor.setTo(51, 113, 71);
+    }
 }
 
 class ThirdScene extends Phaser.Scene {
@@ -163,6 +171,17 @@ class ThirdScene extends Phaser.Scene {
         this.load.audio('bird', 'Background Noise.wav');
     }
     create(){
+        const rect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x000000);
+        rect.setOrigin(0, 0);
+        rect.setAlpha(1);
+
+        this.tweens.add({
+            targets: rect,
+            alpha: 0,
+            duration: 1000,
+            ease: "Linear",
+        });
+
         let sound = this.sound.add('bird');
 
         this.graphics = this.add.graphics();
@@ -201,7 +220,7 @@ class ThirdScene extends Phaser.Scene {
             duration: 2000, // duration of the tween in milliseconds
             scale: 0.5, // the scale of the image at the end of the tween
             alpha: 0, // the alpha value of the image at the end of the tween
-            delay: 2500,
+            delay: 2700,
             ease: 'Linear',
             onStart: function () {
                 sound.play();
@@ -218,10 +237,12 @@ class ThirdScene extends Phaser.Scene {
         ease: 'Linear',
         loop: -1,
         yoyo: false,
-        delay: 500
+        delay: 700
        });
     }
-    
+    update(){
+        this.cameras.main.backgroundColor.setTo(61, 139, 55);
+    }
 }
 
 let config = {
