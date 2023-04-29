@@ -1,5 +1,5 @@
 # Cinematic
-*By Lynelle Goh<br>*
+*By Lynelle Goh<br><br>*
 **3+ distinct visual scenes (with distinct “Scene” classes) <br>**
 First Scene: My logo <br>
 Second Scene: Introduction to the cinematic<br>
