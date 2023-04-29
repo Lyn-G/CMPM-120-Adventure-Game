@@ -1,5 +1,5 @@
 # Cinematic
-## By Lynelle Goh<br>
+*By Lynelle Goh<br>*
 **3+ distinct visual scenes (with distinct “Scene” classes) <br>**
 First Scene: My logo <br>
 Second Scene: Introduction to the cinematic<br>
@@ -13,7 +13,7 @@ Second image: Main menu drawing (drawn using the same website) <br><br>
 **2+ geometric shapes (rendered in-engine)<br>**
 Put two triangles on the logo; made a cursor on the main menu scene using the circle function <br><br>
 **1+ big fancy text (composed out of engine)<br>**
-My own logo (created using Canva with a free template) <br><br>
+My own logo (created using [Canva](https://www.canva.com/) with a free template) <br><br>
 **1+ multi-line text (rendered in-engine)<br>**
 Main menu text lines <br><br>
 **1+ fading scene transition (e.g. fade to black)<br>**
