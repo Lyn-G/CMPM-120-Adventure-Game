@@ -5,6 +5,7 @@ class Cinematic extends Phaser.Scene {
 
     preload(){
         this.load.image('logo', 'logo.png');
+        this.load.audio('my sound', 'Sound Effect.wav');
     }
 
     create() {
@@ -28,13 +29,17 @@ class Cinematic extends Phaser.Scene {
         tri.alpha = 0;
         tri_1.alpha = 0;
 
+        let sound = this.sound.add('my sound');
+
         this.tweens.add({
             targets: [this.imageObject, tri, tri_1],
             alpha: 1,
             duration: 2000, // the duration of the tween in milliseconds
             ease: "Linear", // the easing function to use
             delay:1000,
-            
+            onStart: function () {
+                sound.play();
+              },
         });
 
         this.tweens.add({
@@ -155,8 +160,11 @@ class ThirdScene extends Phaser.Scene {
     }
     preload(){
         this.load.image('main', 'main menu.png');
+        this.load.audio('bird', 'Background Noise.wav');
     }
     create(){
+        let sound = this.sound.add('bird');
+
         this.graphics = this.add.graphics();
         this.graphics.fillGradientStyle(0x099773, 0x39B18D, 0x1CA17D,0x26A783, 0.8, 1, 0.3, 0.1); 
         let idk = this.graphics.fillCircle(400, 100,
@@ -195,6 +203,9 @@ class ThirdScene extends Phaser.Scene {
             alpha: 0, // the alpha value of the image at the end of the tween
             delay: 2500,
             ease: 'Linear',
+            onStart: function () {
+                sound.play();
+            },
             onComplete: function () {
                 image.destroy(); // remove the image from the scene after the tween is complete
             }
@@ -206,7 +217,7 @@ class ThirdScene extends Phaser.Scene {
         duration: 500,
         ease: 'Linear',
         loop: -1,
-        yoyo: true,
+        yoyo: false,
         delay: 500
        });
     }
