@@ -1,12 +1,13 @@
 class Demo1 extends AdventureScene {
     constructor() {
-        super("demo1", "demo1");
+        super("demo1", "Entrance");
     }
 
     onEnter() {
 
-        let clip = this.add.text(this.w * 0.4, this.w * 0.3, "📎 paperclip")
+        let clip = this.add.text(this.w * 0.15, this.w * 0.3, "There's a\nhole here...")
             .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
             .setInteractive()
             .on('pointerover', () => this.showMessage("Metal, bent."))
             .on('pointerdown', () => {
@@ -58,6 +59,9 @@ class Demo1 extends AdventureScene {
                 }
             })
 
+        let explain = this.add.text(this.w *0.02, this.w * 0.49, "We've been teleported to a Candyland! How shall you proceed?")
+        .setFontSize(this.s *2.4)
+        .setFontFamily("Tahoma")
     }
 }
 
@@ -184,7 +188,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [ Dining_Hall, Demo1],
+    scene: [Demo1],
     title: "Adventure Game",
 });
 
