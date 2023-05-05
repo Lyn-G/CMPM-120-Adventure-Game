@@ -97,8 +97,18 @@ class Intro extends Phaser.Scene {
         super('intro')
     }
     create() {
-        this.add.text(50,50, "Adventure awaits!").setFontSize(50);
-        this.add.text(50,100, "Click anywhere to begin.").setFontSize(20);
+        this.add.text(750, 540, "Kandy Kruz")
+            .setFontSize(50)
+            .setFontFamily("Tahoma");
+
+        this.add.text(765,600, "Click anywhere to begin.")
+            .setFontSize(20)
+            .setFontFamily("Tahoma");
+
+        this.add.text(450, 800, "Use your mouse to click on the different objects to progress through!!!")
+            .setFontSize(29)
+            .setFontFamily("Tahoma");
+            
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
             this.time.delayedCall(1000, () => this.scene.start('demo1'));
