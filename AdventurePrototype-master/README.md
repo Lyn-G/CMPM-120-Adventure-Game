@@ -20,3 +20,7 @@ Asset sources:
 Code sources:
 - `adventure.js` and `index.html` were created for this project [Adam Smith](https://github.com/rndmcnlly) and edited by me.
 - `game.js` was sketched by [Adam Smith](https://github.com/rndmcnlly) and rewritten by me.
+
+used this links to create background image:
+https://wallpapersafari.com/candyland-background/
+https://www.befunky.com/create/blur-image/

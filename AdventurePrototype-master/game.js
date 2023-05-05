@@ -1,11 +1,11 @@
 class Demo1 extends AdventureScene {
     constructor() {
-        super("demo1", "First Room");
+        super("demo1", "demo1");
     }
 
     onEnter() {
 
-        let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+        let clip = this.add.text(this.w * 0.4, this.w * 0.3, "📎 paperclip")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("Metal, bent."))
@@ -116,6 +116,42 @@ class Intro extends Phaser.Scene {
     }
 }
 
+class Dining_Hall extends Phaser.Scene{
+    constructor() {
+        super("Dining_Hall", "Dining Hall");
+    }
+
+    create(){
+        this.cameras.main.setBackgroundColor(0xff00cc);
+    
+        this.add.text(140, 200, "Dining Hall")
+            .setFontSize(120)
+            .setFontFamily("Tahoma");
+
+        let y = 500;
+
+        let text = "You hunger for food at the dining hall.\nThere's cookies for dessert.\nYou clumsily drop one when trying to grab it.\nBlowing it off, you still eat it.";
+        let lines = text.split("\n");
+
+        for (let i = 0; i < lines.length; i++){
+            let line = this.add.text(200, y, lines[i], {font: "60px Tahoma", fill: "#ffffff"})
+            line.alpha = 0;
+
+            this.tweens.add({
+                targets: line,
+                alpha: 1,
+                duration: 1000,
+                ease: "Linear",
+                delay: i * 2000,
+            });
+
+            y += 100;
+        }
+        
+
+    }
+}
+
 class Outro extends Phaser.Scene {
     constructor() {
         super('outro');
@@ -135,7 +171,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, Demo1, Demo2, Outro],
+    scene: [ Dining_Hall],
     title: "Adventure Game",
 });
 
