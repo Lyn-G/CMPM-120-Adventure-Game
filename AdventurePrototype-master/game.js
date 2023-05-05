@@ -147,8 +147,21 @@ class Dining_Hall extends Phaser.Scene{
 
             y += 100;
         }
-        
+        let delay = lines.length * 2000 + 5000;
 
+        this.tweens.add({
+            targets: this.cameras.main,
+            alpha: 0,
+            duration: 1000,
+            ease: "Linear",
+            delay: delay, 
+            onComplete: function () {
+                // Switch to the next scene after the fade-out is complete
+                this.scene.start("demo1");
+            },
+            callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
+        });
+    
     }
 }
 
@@ -171,7 +184,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [ Dining_Hall],
+    scene: [ Dining_Hall, Demo1],
     title: "Adventure Game",
 });
 
