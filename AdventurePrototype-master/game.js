@@ -4,59 +4,73 @@ class Demo1 extends AdventureScene {
     }
 
     onEnter() {
+        
 
         let clip = this.add.text(this.w * 0.15, this.w * 0.3, "There's a\nhole here...")
             .setFontSize(this.s * 2)
             .setFontFamily("Tahoma")
             .setInteractive()
-            .on('pointerover', () => this.showMessage("Metal, bent."))
+            .on('pointerover', () => this.showMessage("You can't see the hole,\nbut trust me, it's there."))
             .on('pointerdown', () => {
-                this.showMessage("No touching!");
+                this.showMessage("Going into the abyss!");
                 this.tweens.add({
                     targets: clip,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
                     ease: 'Sine.inOut',
-                    duration: 100
+                    duration: 100,
+                    
                 });
             });
 
-        let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
-            .setFontSize(this.s * 2)
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("It's a nice key.")
-            })
-            .on('pointerdown', () => {
-                this.showMessage("You pick up the key.");
-                this.gainItem('key');
-                this.tweens.add({
-                    targets: key,
-                    y: `-=${2 * this.s}`,
-                    alpha: { from: 1, to: 0 },
-                    duration: 500,
-                    onComplete: () => key.destroy()
-                });
-            })
+        // let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
+        //     .setFontSize(this.s * 2)
+        //     .setInteractive()
+        //     .on('pointerover', () => {
+        //         this.showMessage("It's a nice key.")
+        //     })
+        //     .on('pointerdown', () => {
+        //         this.showMessage("You pick up the key.");
+        //         this.gainItem('key');
+        //         this.tweens.add({
+        //             targets: key,
+        //             y: `-=${2 * this.s}`,
+        //             alpha: { from: 1, to: 0 },
+        //             duration: 500,
+        //             onComplete: () => key.destroy()
+        //         });
+        //     })
 
-        let door = this.add.text(this.w * 0.1, this.w * 0.15, "🚪 locked door")
+        let door = this.add.text(this.w * 0.25, this.w * 0.21, "Just walking\non the path...")
             .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
             .setInteractive()
             .on('pointerover', () => {
-                if (this.hasItem("key")) {
-                    this.showMessage("You've got the key for this door.");
-                } else {
-                    this.showMessage("It's locked. Can you find a key?");
-                }
+                // if (this.hasItem("key")) {
+                //     this.showMessage("You've got the key for this door.");
+                // } else {
+                //     this.showMessage("It's locked. Can you find a key?");
+                // }
+
+                this.showMessage("There's a path for a reason! ")
             })
             .on('pointerdown', () => {
-                if (this.hasItem("key")) {
-                    this.loseItem("key");
-                    this.showMessage("*squeak*");
-                    door.setText("🚪 unlocked door");
-                    this.gotoScene('demo2');
-                }
+                // this.loseItem("key");
+                // this.showMessage("*squeak*");
+                // door.setText("🚪 unlocked door");
+                this.showMessage("What will we see???");
+                this.tweens.add({
+                    targets: door,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100,
+                    
+                });
+                this.gotoScene('demo2');
+            
             })
 
         let explain = this.add.text(this.w *0.02, this.w * 0.49, "We've been teleported to a Candyland! How shall you proceed?")
@@ -120,6 +134,7 @@ class Intro extends Phaser.Scene {
     }
 }
 
+// maybe make the background a gradient?
 class Dining_Hall extends Phaser.Scene{
     constructor() {
         super("Dining_Hall", "Dining Hall");

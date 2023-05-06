@@ -61,11 +61,15 @@ class AdventureScene extends Phaser.Scene {
 
     showMessage(message) {
         this.messageBox.setText(message);
+        this.messageBox.setStyle({
+            fill: '#ff69b4'
+        });
+        this.messageBox.setFontFamily('Tahoma');
         this.tweens.add({
             targets: this.messageBox,
             alpha: { from: 1, to: 0 },
             easing: 'Quintic.in',
-            duration: 4 * this.transitionDuration
+            duration: 10 * this.transitionDuration
         });
     }
 
