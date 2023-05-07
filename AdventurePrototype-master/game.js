@@ -201,7 +201,7 @@ class Dirt extends AdventureScene {
                     duration: 100,
                     
                 });
-                // this.gotoScene('dirt');
+                this.gotoScene('Road');
             });
 
         let explain = this.add.text(this.w *0.1, this.w * 0.5, "That was fun! I think i see a hole over there!")
@@ -230,6 +230,33 @@ class Road extends AdventureScene {
         this.add.image(1250, 850, 'ice cream');
         this.add.image(1000, 800, 'Jelly Bean')
         .setScale(0.5);
+
+        this.add.text(this.w *0.02, this.w * 0.49, "We stumble across an ice cream kitty!\nWhy not feed it something?")
+        .setFontSize(this.s *2.4)
+        .setFontFamily("Tahoma");        
+
+        if (this.hasItem('dirt pie cup')) {
+            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("It's okay to feed chocolate to this kitty :)"))
+            .on('pointerdown', () => {
+            this.showMessage("Feeding kitty!!!");
+            this.loseItem('dirt pie cup');
+            this.tweens.add({
+                targets: dirt_option,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            // this.gotoScene('dirt');
+            });
+            this.add.text(this.w *0.039, this.w * 0.35, "Give the dirt\npie cup")
+            .setFontSize(this.s *2.4)
+            .setFontFamily("Tahoma");
+        }
     }
 }
 
@@ -325,7 +352,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Road],
+    scene: [Demo2, Dirt,Road],
     title: "Adventure Game",
 });
 
