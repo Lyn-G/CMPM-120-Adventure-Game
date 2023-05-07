@@ -410,7 +410,34 @@ class Ending extends Phaser.Scene {
         super('ending')
     }
     create() {
-        this.add.text(100,100, 'We wake up on the floor at the dining hall...\nLesson learned,\nDO NOT eat food off the floor.');
+        this.cameras.main.setBackgroundColor("872657");
+    
+        this.add.text(140, 200, "Dining Hall")
+            .setFontSize(120)
+            .setFontFamily("Tahoma");    
+    
+        let finish = this.add.text(140, 350, "You passed out from eating the gross cookie that fell on the floor.\nStop eating food that’s touched the ground.")
+            .setFontSize(54)
+            .setFontFamily("Tahoma"); 
+
+        let cookie = this.add.text(150, 800, "🍪 . . .")
+            .setFontSize(200)
+            .setFontFamily("Tahoma")
+            .setTint("0xBEBEBE"); 
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            alpha: 0,
+            duration: 1000,
+            delay: 8000,
+            onComplete: function () {
+                // Switch to the next scene after the fade-out is complete
+                this.scene.start("outro");
+            },
+            callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
+        });
+            
+        
     }
 }
 
@@ -432,7 +459,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Ending],
+    scene: [Ending, Outro],
     title: "Adventure Game",
 });
 
