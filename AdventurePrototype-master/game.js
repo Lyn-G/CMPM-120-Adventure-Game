@@ -252,7 +252,7 @@ class Road extends AdventureScene {
                 duration: 100,
                 
                 });
-            // this.gotoScene('dirt');
+            this.gotoScene('Choco');
             });
             this.add.text(this.w *0.039, this.w * 0.35, "Give the dirt\npie cup")
             .setFontSize(this.s *2.4)
@@ -323,7 +323,9 @@ class Choco extends AdventureScene {
                             duration: 100,
                             
                         });
+                        this.gotoScene('ending');
                     });
+                    
                 }
             }
         });
@@ -350,7 +352,7 @@ class Intro extends Phaser.Scene {
             
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
-            this.time.delayedCall(1000, () => this.scene.start('demo1'));
+            this.time.delayedCall(1000, () => this.gotoScene('Dining_Hall'));
         });
     }
 }
@@ -397,7 +399,7 @@ class Dining_Hall extends Phaser.Scene{
             delay: delay, 
             onComplete: function () {
                 // Switch to the next scene after the fade-out is complete
-                this.scene.start("demo1");
+                this.gotoScene("demo1");
             },
             callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
         });
@@ -459,7 +461,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Ending, Outro],
+    // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Choco,Ending, Outro
+    scene: [Choco,Ending, Outro],
     title: "Adventure Game",
 });
 
