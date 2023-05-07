@@ -29,5 +29,13 @@ used these links to create background image 2:
 https://www.pxfuel.com/en/desktop-wallpaper-nphdo
 https://www.befunky.com/create/
 
+used these links to make image:
+https://tmnt2012series.fandom.com/wiki/Ice_Cream_Kitty
+https://www.befunky.com/create/
+
+used these links for jelly bean:
+http://www.clker.com/clipart-jelly-bean-bowl.html
+https://www.befunky.com/create/
+
 used this link to draw the gummy worms:
 https://sketchpad.app/en/

@@ -216,14 +216,20 @@ class Road extends AdventureScene {
     }
 
     preload() {
-        this.load.image('Candyland', 'Candyland.png');
+        // this.load.image('Candyland', 'Candyland.png');
         this.load.image('Candy Road', 'Candy Road.png');
+        this.load.image('ice cream', 'Ice Cream Cat.png');
+        this.load.image('Jelly Bean', 'Jelly Bean Bowl.png');
     }
 
     onEnter() {
         this.add.image(590,280,"Candy Road")
         .setScale(2);
         this.cameras.main.setBackgroundColor('#CD919E');
+
+        this.add.image(1250, 850, 'ice cream');
+        this.add.image(1000, 800, 'Jelly Bean')
+        .setScale(0.5);
     }
 }
 
