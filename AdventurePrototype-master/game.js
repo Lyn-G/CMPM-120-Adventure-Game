@@ -138,7 +138,7 @@ class Demo2 extends AdventureScene {
                     duration: 100,
                     
                 });
-                // this.gotoScene('demo2');
+                this.gotoScene('dirt');
             });
 
 
@@ -159,14 +159,71 @@ class Demo2 extends AdventureScene {
                     duration: 100,
                     
                 });
-                // this.gotoScene('demo2');
+                this.gotoScene('dirt');
             });
+
+        let explain = this.add.text(this.w *0.02, this.w * 0.01, "These guys are so cute! What shall we do?")
+            .setFontSize(this.s *2.9)
+            .setFontFamily("Tahoma")
     }
 }
 
 class Dirt extends AdventureScene {
     constructor() {
         super("dirt", "We met some gummy worms!");
+    }
+
+    preload() {
+        this.load.image('first', 'first gummy worm.png');
+        this.load.image('second', "Helena's gummy worm.png");
+        this.load.image('third', 'green+pink.png');
+    }
+
+    onEnter() {
+        this.cameras.main.setBackgroundColor('#8B5742');
+        this.add.image(600,300, 'first');
+        this.add.image(400,800, 'second');
+        this.add.image(1200,700, 'third');
+
+        let clip = this.add.text(this.w * 0.52, this.w * 0.09, "I see some light\nover here.")
+            .setFontSize(this.s * 2.6)
+            .setFontFamily("Tahoma")
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("I think we can crawl out of here!"))
+            .on('pointerdown', () => {
+                this.showMessage("We're out!");
+                this.tweens.add({
+                    targets: clip,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100,
+                    
+                });
+                // this.gotoScene('dirt');
+            });
+
+        let explain = this.add.text(this.w *0.1, this.w * 0.5, "That was fun! I think i see a hole over there!")
+            .setFontSize(this.s *2.9)
+            .setFontFamily("Tahoma")
+    }
+}
+
+class Road extends AdventureScene {
+    constructor() {
+        super("Road", "Along the Road");
+    }
+
+    preload() {
+        this.load.image('Candyland', 'Candyland.png');
+        this.load.image('Candy Road', 'Candy Road.png');
+    }
+
+    onEnter() {
+        this.add.image(590,280,"Candy Road")
+        .setScale(2);
+        this.cameras.main.setBackgroundColor('#CD919E');
     }
 }
 
@@ -262,7 +319,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Demo2],
+    scene: [Road],
     title: "Adventure Game",
 });
 

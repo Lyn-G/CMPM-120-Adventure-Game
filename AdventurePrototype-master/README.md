@@ -18,12 +18,16 @@ Asset sources:
 - (For each image/audio/video asset used, describe how it was created. What tool did you use to create it? Was it based on another work? If so, how did you change it, and where can we learn more about the original work for comparison? Use [Markdown link syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links).)
 
 Code sources:
-- `adventure.js` and `index.html` were created for this project [Adam Smith](https://github.com/rndmcnlly) and edited by me.
-- `game.js` was sketched by [Adam Smith](https://github.com/rndmcnlly) and rewritten by me.
+- `adventure.js` and `index.html` were created for this project [Adam Smith](https://github.com/rndmcnlly) and edited by Lynelle Goh.
+- `game.js` was sketched by [Adam Smith](https://github.com/rndmcnlly) and rewritten by Lynelle Goh.
 
-used this links to create background image:
+used these links to create background image 1:
 https://wallpapersafari.com/candyland-background/
-https://www.befunky.com/create/blur-image/
+https://www.befunky.com/create/
+
+used these links to create background image 2:
+https://www.pxfuel.com/en/desktop-wallpaper-nphdo
+https://www.befunky.com/create/
 
 used this link to draw the gummy worms:
 https://sketchpad.app/en/
