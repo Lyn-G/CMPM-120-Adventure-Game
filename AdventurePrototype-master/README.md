@@ -24,3 +24,6 @@ Code sources:
 used this links to create background image:
 https://wallpapersafari.com/candyland-background/
 https://www.befunky.com/create/blur-image/
+
+used this link to draw the gummy worms:
+https://sketchpad.app/en/

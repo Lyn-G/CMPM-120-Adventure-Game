@@ -9,10 +9,6 @@ class AdventureScene extends Phaser.Scene {
         this.name = name;
     }
 
-    preload() {
-        this.load.image('Candyland', 'Candyland.png');
-    }
-
     create() {
         this.transitionDuration = 1000;
 
@@ -20,7 +16,7 @@ class AdventureScene extends Phaser.Scene {
         this.h = this.game.config.height;
         this.s = this.game.config.width * 0.01;
 
-        this.add.image(700,400,"Candyland");
+        // this.add.image(700,400,"Candyland");
         
         this.cameras.main.setBackgroundColor('#454');
         this.cameras.main.fadeIn(this.transitionDuration, 0, 0, 0);

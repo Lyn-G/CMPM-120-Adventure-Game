@@ -2,9 +2,13 @@ class Demo1 extends AdventureScene {
     constructor() {
         super("demo1", "Entrance");
     }
+    preload() {
+        this.load.image('Candyland', 'Candyland.png');
+    }
 
     onEnter() {
-        
+        this.add.image(664,400,"Candyland");
+        this.cameras.main.setBackgroundColor('#CD919E');
 
         let clip = this.add.text(this.w * 0.15, this.w * 0.3, "There's a\nhole here...")
             .setFontSize(this.s * 2)
@@ -22,6 +26,7 @@ class Demo1 extends AdventureScene {
                     duration: 100,
                     
                 });
+                this.gotoScene('demo2');
             });
 
         // let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
@@ -69,7 +74,6 @@ class Demo1 extends AdventureScene {
                     duration: 100,
                     
                 });
-                this.gotoScene('demo2');
             
             })
 
@@ -81,32 +85,88 @@ class Demo1 extends AdventureScene {
 
 class Demo2 extends AdventureScene {
     constructor() {
-        super("demo2", "The second room has a long name (it truly does).");
+        super("demo2", "We met some gummy worms!");
+    }
+
+    preload() {
+        this.load.image('first', 'first gummy worm.png');
+        this.load.image('second', "Helena's gummy worm.png");
+        this.load.image('third', 'green+pink.png');
     }
     onEnter() {
-        this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
+        // this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
+        //     .setFontSize(this.s * 2)
+        //     .setInteractive()
+        //     .on('pointerover', () => {
+        //         this.showMessage("You've got no other choice, really.");
+        //     })
+        //     .on('pointerdown', () => {
+        //         this.gotoScene('demo1');
+        //     });
+
+        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
+        //     .setInteractive()
+        //     .on('pointerover', () => {
+        //         this.showMessage('*giggles*');
+        //         this.tweens.add({
+        //             targets: finish,
+        //             x: this.s + (this.h - 2 * this.s) * Math.random(),
+        //             y: this.s + (this.h - 2 * this.s) * Math.random(),
+        //             ease: 'Sine.inOut',
+        //             duration: 500
+        //         });
+        //     })
+        //     .on('pointerdown', () => this.gotoScene('outro'));
+        this.cameras.main.setBackgroundColor('#8B5742');
+        this.add.image(600,300, 'first');
+        this.add.image(400,800, 'second');
+        this.add.image(1200,700, 'third');
+
+        let clip = this.add.text(this.w * 0.15, this.w * 0.3, "Ride on their back!")
             .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
             .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("You've got no other choice, really.");
-            })
+            .on('pointerover', () => this.showMessage("You asked very politely, so they'll let you on!"))
             .on('pointerdown', () => {
-                this.gotoScene('demo1');
+                this.showMessage("Yippee!!!");
+                this.tweens.add({
+                    targets: clip,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100,
+                    
+                });
+                // this.gotoScene('demo2');
             });
 
-        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
+
+            let clip2 = this.add.text(this.w * 0.5, this.w * 0.2, "Pet the gummy worms!")
+            .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
             .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage('*giggles*');
+            .on('pointerover', () => this.showMessage("I wonder what they feel like?"))
+            .on('pointerdown', () => {
+                this.showMessage("They gave you a dirt pie cup! Mmm, yummy!");
+                this.gainItem('dirt pie cup');
                 this.tweens.add({
-                    targets: finish,
-                    x: this.s + (this.h - 2 * this.s) * Math.random(),
-                    y: this.s + (this.h - 2 * this.s) * Math.random(),
+                    targets: clip2,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
                     ease: 'Sine.inOut',
-                    duration: 500
+                    duration: 100,
+                    
                 });
-            })
-            .on('pointerdown', () => this.gotoScene('outro'));
+                // this.gotoScene('demo2');
+            });
+    }
+}
+
+class Dirt extends AdventureScene {
+    constructor() {
+        super("dirt", "We met some gummy worms!");
     }
 }
 
@@ -195,7 +255,6 @@ class Outro extends Phaser.Scene {
     }
 }
 
-
 const game = new Phaser.Game({
     scale: {
         mode: Phaser.Scale.FIT,
@@ -203,7 +262,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Demo1],
+    scene: [Demo2],
     title: "Adventure Game",
 });
 
