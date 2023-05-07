@@ -35,7 +35,11 @@ https://www.befunky.com/create/
 
 used these links for jelly bean:
 http://www.clker.com/clipart-jelly-bean-bowl.html
-https://www.befunky.com/create/
+https://www.befunky.com/create/\
+
+chocolate ice cream:
+https://creazilla.com/nodes/30348-chocolate-ice-cream-cone-clipart
+
 
 used this link to draw the gummy worms:
 https://sketchpad.app/en/

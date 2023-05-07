@@ -242,6 +242,7 @@ class Road extends AdventureScene {
             .on('pointerdown', () => {
             this.showMessage("Feeding kitty!!!");
             this.loseItem('dirt pie cup');
+            // this.someBoolean = true;
             this.tweens.add({
                 targets: dirt_option,
                 x: '+=' + this.s,
@@ -257,6 +258,76 @@ class Road extends AdventureScene {
             .setFontSize(this.s *2.4)
             .setFontFamily("Tahoma");
         }
+    }
+}
+
+class Choco extends AdventureScene {
+    constructor() {
+        super("Choco", "The kitty now has chocolate ice cream!");
+    }
+    preload() {
+        this.load.image('Candy Road', 'Candy Road.png');
+        this.load.image('ice cream', 'Ice Cream Cat.png');
+        this.load.image('choco', 'Chocolate.png');
+    }
+
+    onEnter() {
+        this.add.image(590,280,"Candy Road")
+        .setScale(2);
+        this.cameras.main.setBackgroundColor('#CD919E');
+
+        let kitty = this.add.image(1250, 850, 'ice cream');
+        let ice = this.add.image(1250, 700, 'choco')
+        .setScale(0.25);
+
+        this.tweens.add({
+            targets: [kitty, ice],
+            x: -100,
+            delay: 2000,
+            duration: 1500,
+            ease: 'Power2',
+            onComplete: () => kitty.destroy(),
+            onComplete: () => ice.destroy(), 
+        });
+        
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        wake_up.setAlpha(0);
+        let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
+        .setFontSize(this.s *5)
+        .setFontFamily("Tahoma")
+        .setAlpha(0);
+
+        this.tweens.add({
+            targets: [wake_up, text],
+            alpha: {
+                from: 0,
+                to: 0.8
+            },
+            delay: 3700,
+            duration: 2000,
+            onComplete: () => {
+                console.log(wake_up.alpha);
+                if (wake_up.alpha >= 0.8) {
+                    wake_up.setInteractive()
+                      .on('pointerover', () => {
+                        this.showMessage("Wake up...what do you mean?");
+                      })
+                      .on('pointerdown', () => {
+                        this.showMessage("...");
+                        this.tweens.add({
+                            targets: wake_up,
+                            x: '+=' + this.s,
+                            repeat: 2,
+                            yoyo: true,
+                            ease: 'Sine.inOut',
+                            duration: 100,
+                            
+                        });
+                    });
+                }
+            }
+        });
+        
     }
 }
 
@@ -334,6 +405,15 @@ class Dining_Hall extends Phaser.Scene{
     }
 }
 
+class Ending extends Phaser.Scene {
+    constructor() {
+        super('ending')
+    }
+    create() {
+        this.add.text(100,100, 'We wake up on the floor at the dining hall...\nLesson learned,\nDO NOT eat food off the floor.');
+    }
+}
+
 class Outro extends Phaser.Scene {
     constructor() {
         super('outro');
@@ -352,7 +432,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Demo2, Dirt,Road],
+    scene: [Ending],
     title: "Adventure Game",
 });
 
