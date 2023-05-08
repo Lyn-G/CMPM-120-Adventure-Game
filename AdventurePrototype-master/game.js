@@ -632,6 +632,7 @@ class Candy extends AdventureScene {
         let ice = this.add.image(1250, 700, 'cotton')
         .setScale(0.20);
 
+        // slideOut([kitty, ice], 2000, 1500);
         this.tweens.add({
             targets: [kitty, ice],
             x: -100,
@@ -756,7 +757,18 @@ class Dining_Hall extends Phaser.Scene{
             },
             callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
         });
-    
+
+        // Create the "SKIP" text
+        let skipText = this.add.text(1700, 100, "SKIP")
+        .setFontSize(60);
+
+        // Add a pointerdown event listener to the "SKIP" text
+        skipText.setInteractive()
+        .on('pointerdown', () => {
+            // Transition to the next scene when the "SKIP" text is clicked on
+            this.scene.start('demo1');
+        });
+
     }
 }
 
@@ -792,7 +804,15 @@ class Ending extends Phaser.Scene {
             callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
         });
             
-        
+        let skipText = this.add.text(1700, 100, "SKIP")
+        .setFontSize(60);
+
+        // Add a pointerdown event listener to the "SKIP" text
+        skipText.setInteractive()
+        .on('pointerdown', () => {
+            // Transition to the next scene when the "SKIP" text is clicked on
+            this.scene.start('outro');
+        });
     }
 }
 
@@ -815,7 +835,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Intro, Dining_Hall, Demo1,Encounter, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro],
+    scene: [Road, Road2,Candy],
     title: "Adventure Game",
 });
 
