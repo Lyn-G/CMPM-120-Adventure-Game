@@ -209,6 +209,61 @@ class Dirt extends AdventureScene {
             .setFontFamily("Tahoma")
     }
 }
+class Encounter extends AdventureScene {
+    constructor() {
+        super("Encounter", "A peppermint patties tower?");
+    }
+
+    preload() {
+        this.load.image('patty', 'patty.png');
+        this.load.image('Candyland', 'Candyland.png');
+    }
+
+    onEnter(){
+        this.add.image(664,400,"Candyland");
+        this.cameras.main.setBackgroundColor('#CD919E');
+        this.add.image(700,250, 'patty')
+        .setScale(1.5);
+
+        let clip = this.add.text(this.w * 0.05, this.w * 0.35, "Go around it")
+            .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("That's not very fun..."))
+            .on('pointerdown', () => {
+                this.showMessage("Around it we go!");
+                this.tweens.add({
+                    targets: clip,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100,
+                    
+                });
+                this.gotoScene('Road');
+            });
+        let clip2 = this.add.text(this.w * 0.3, this.w * 0.3, "Eat our way through!")
+            .setFontSize(this.s * 2)
+            .setFontFamily("Tahoma")
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("Surely it's edible...right?"))
+            .on('pointerdown', () => {
+                this.showMessage("*chomp*");
+                this.gainItem('minty cream');
+                this.tweens.add({
+                    targets: clip2,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100,
+                    
+                });
+                this.gotoScene('Road');
+            });
+    }
+}
 
 class Road extends AdventureScene {
     constructor() {
@@ -228,8 +283,25 @@ class Road extends AdventureScene {
         this.cameras.main.setBackgroundColor('#CD919E');
 
         this.add.image(1250, 850, 'ice cream');
-        this.add.image(1000, 800, 'Jelly Bean')
-        .setScale(0.5);
+        let candy = this.add.image(1000, 800, 'Jelly Bean')
+        .setScale(0.5)
+        .setInteractive()
+            .on('pointerover', () => this.showMessage("A bowl of candy."))
+            .on('pointerdown', () => {
+            this.showMessage("FREE CANDY!!!");
+            this.gainItem('candy');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: candy,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            this.gotoScene('Road2');
+            });
 
         this.add.text(this.w *0.02, this.w * 0.49, "We stumble across an ice cream kitty!\nWhy not feed it something?")
         .setFontSize(this.s *2.4)
@@ -257,6 +329,141 @@ class Road extends AdventureScene {
             this.add.text(this.w *0.039, this.w * 0.35, "Give the dirt\npie cup")
             .setFontSize(this.s *2.4)
             .setFontFamily("Tahoma");
+        } else if (this.hasItem('minty cream')) {
+            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("Fresh breath!"))
+            .on('pointerdown', () => {
+            this.showMessage("Feeding kitty!!!");
+            this.loseItem('minty cream');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: mint_option,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            this.gotoScene('Mint');
+            });
+            this.add.text(this.w *0.039, this.w * 0.35, "Give the\nmint cream")
+            .setFontSize(this.s *2.4)
+            .setFontFamily("Tahoma"); 
+        }
+    }
+}
+
+class Road2 extends AdventureScene {
+    constructor() {
+        super("Road2", "Along the Road");
+    }
+
+    preload() {
+        // this.load.image('Candyland', 'Candyland.png');
+        this.load.image('Candy Road', 'Candy Road.png');
+        this.load.image('ice cream', 'Ice Cream Cat.png');
+        // this.load.image('Jelly Bean', 'Jelly Bean Bowl.png');
+    }
+
+    onEnter() {
+        this.add.image(590,280,"Candy Road")
+        .setScale(2);
+        this.cameras.main.setBackgroundColor('#CD919E');
+
+        this.add.image(1250, 850, 'ice cream');
+        /*
+        let candy = this.add.image(1000, 800, 'Jelly Bean')
+        .setScale(0.5)
+        .setInteractive()
+            .on('pointerover', () => this.showMessage("A bowl of candy."))
+            .on('pointerdown', () => {
+            this.showMessage("FREE CANDY!!!");
+            this.gainItem('candy');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: candy,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            // this.gotoScene('Choco');
+            });
+        */
+        this.add.text(this.w *0.02, this.w * 0.49, "We stumble across an ice cream kitty!\nWhy not feed it something?")
+        .setFontSize(this.s *2.4)
+        .setFontFamily("Tahoma");      
+        
+        let candy_option = this.add.rectangle(700, 750, 300, 300, 0xff0000, 1)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("Sweet treat for kitty!"))
+            .on('pointerdown', () => {
+            this.showMessage("Feeding kitty!!!");
+            this.loseItem('candy');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: candy_option,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            this.gotoScene('Candy');
+            });
+            this.add.text(this.w *0.3, this.w * 0.375, "Give candy")
+            .setFontSize(this.s *2.4)
+            .setFontFamily("Tahoma");
+
+        if (this.hasItem('dirt pie cup')) {
+            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("It's okay to feed chocolate to this kitty :)"))
+            .on('pointerdown', () => {
+            this.showMessage("Feeding kitty!!!");
+            this.loseItem('dirt pie cup');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: dirt_option,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            this.gotoScene('Choco');
+            });
+            this.add.text(this.w *0.039, this.w * 0.35, "Give the dirt\npie cup")
+            .setFontSize(this.s *2.4)
+            .setFontFamily("Tahoma");
+        } else if (this.hasItem('minty cream')) {
+            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("Fresh breath!"))
+            .on('pointerdown', () => {
+            this.showMessage("Feeding kitty!!!");
+            this.loseItem('minty cream');
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: mint_option,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                
+                });
+            this.gotoScene('Mint');
+            });
+            this.add.text(this.w *0.039, this.w * 0.35, "Give the\nmint cream")
+            .setFontSize(this.s *2.4)
+            .setFontFamily("Tahoma"); 
         }
     }
 }
@@ -505,7 +712,7 @@ class Intro extends Phaser.Scene {
 // maybe make the background a gradient?
 class Dining_Hall extends Phaser.Scene{
     constructor() {
-        super("Dining_Hall", "Dining Hall");
+        super("Dining_Hall");
     }
 
     create(){
@@ -606,8 +813,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Choco,Ending, Outro
-    scene: [Candy],
+    // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro
+    scene: [Dining_Hall],
     title: "Adventure Game",
 });
 
