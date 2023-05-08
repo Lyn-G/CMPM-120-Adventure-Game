@@ -74,7 +74,7 @@ class Demo1 extends AdventureScene {
                     duration: 100,
                     
                 });
-            
+                this.gotoScene('Encounter');
             })
 
         let explain = this.add.text(this.w *0.02, this.w * 0.49, "We've been teleported to a Candyland! How shall you proceed?")
@@ -209,6 +209,7 @@ class Dirt extends AdventureScene {
             .setFontFamily("Tahoma")
     }
 }
+
 class Encounter extends AdventureScene {
     constructor() {
         super("Encounter", "A peppermint patties tower?");
@@ -547,7 +548,7 @@ class Mint extends AdventureScene {
     preload() {
         this.load.image('Candy Road', 'Candy Road.png');
         this.load.image('ice cream', 'Ice Cream Cat.png');
-        this.load.image('choco', 'peppermint.png');
+        this.load.image('m', 'peppermint.png');
     }
 
     onEnter() {
@@ -556,7 +557,7 @@ class Mint extends AdventureScene {
         this.cameras.main.setBackgroundColor('#CD919E');
 
         let kitty = this.add.image(1250, 850, 'ice cream');
-        let ice = this.add.image(1265, 680, 'choco')
+        let ice = this.add.image(1265, 680, 'm')
         .setScale(0.25);
 
         this.tweens.add({
@@ -619,7 +620,7 @@ class Candy extends AdventureScene {
     preload() {
         this.load.image('Candy Road', 'Candy Road.png');
         this.load.image('ice cream', 'Ice Cream Cat.png');
-        this.load.image('choco', 'cotton candy.png');
+        this.load.image('cotton', 'cotton candy.png');
     }
 
     onEnter() {
@@ -628,7 +629,7 @@ class Candy extends AdventureScene {
         this.cameras.main.setBackgroundColor('#CD919E');
 
         let kitty = this.add.image(1250, 850, 'ice cream');
-        let ice = this.add.image(1250, 700, 'choco')
+        let ice = this.add.image(1250, 700, 'cotton')
         .setScale(0.20);
 
         this.tweens.add({
@@ -704,7 +705,7 @@ class Intro extends Phaser.Scene {
             
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
-            this.time.delayedCall(1000, () => this.gotoScene('Dining_Hall'));
+            this.time.delayedCall(1000, () => this.scene.start('Dining_Hall'));
         });
     }
 }
@@ -751,7 +752,7 @@ class Dining_Hall extends Phaser.Scene{
             delay: delay, 
             onComplete: function () {
                 // Switch to the next scene after the fade-out is complete
-                this.gotoScene("demo1");
+                this.scene.start("demo1");
             },
             callbackScope: this // Ensure that the callback function is called in the scope of the current scene object
         });
@@ -814,7 +815,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Dining_Hall],
+    scene: [Intro, Dining_Hall, Demo1,Encounter, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro],
     title: "Adventure Game",
 });
 
