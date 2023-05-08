@@ -333,6 +333,151 @@ class Choco extends AdventureScene {
     }
 }
 
+class Mint extends AdventureScene {
+    constructor() {
+        super("Mint", "The kitty now has peppermint ice cream!");
+    }
+    preload() {
+        this.load.image('Candy Road', 'Candy Road.png');
+        this.load.image('ice cream', 'Ice Cream Cat.png');
+        this.load.image('choco', 'peppermint.png');
+    }
+
+    onEnter() {
+        this.add.image(590,280,"Candy Road")
+        .setScale(2);
+        this.cameras.main.setBackgroundColor('#CD919E');
+
+        let kitty = this.add.image(1250, 850, 'ice cream');
+        let ice = this.add.image(1265, 680, 'choco')
+        .setScale(0.25);
+
+        this.tweens.add({
+            targets: [kitty, ice],
+            x: -100,
+            delay: 2000,
+            duration: 1500,
+            ease: 'Power2',
+            onComplete: () => kitty.destroy(),
+            onComplete: () => ice.destroy(), 
+        });
+        
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        wake_up.setAlpha(0);
+        let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
+        .setFontSize(this.s *5)
+        .setFontFamily("Tahoma")
+        .setAlpha(0);
+
+        this.tweens.add({
+            targets: [wake_up, text],
+            alpha: {
+                from: 0,
+                to: 0.8
+            },
+            delay: 3700,
+            duration: 2000,
+            onComplete: () => {
+                console.log(wake_up.alpha);
+                if (wake_up.alpha >= 0.8) {
+                    wake_up.setInteractive()
+                      .on('pointerover', () => {
+                        this.showMessage("Wake up...what do you mean?");
+                      })
+                      .on('pointerdown', () => {
+                        this.showMessage("...");
+                        this.tweens.add({
+                            targets: wake_up,
+                            x: '+=' + this.s,
+                            repeat: 2,
+                            yoyo: true,
+                            ease: 'Sine.inOut',
+                            duration: 100,
+                            
+                        });
+                        this.gotoScene('ending');
+                    });
+                    
+                }
+            }
+        });
+    
+    }
+}
+
+class Candy extends AdventureScene {
+    constructor() {
+        super("Candy", "The kitty now has cotton candy ice cream!");
+    }
+    preload() {
+        this.load.image('Candy Road', 'Candy Road.png');
+        this.load.image('ice cream', 'Ice Cream Cat.png');
+        this.load.image('choco', 'cotton candy.png');
+    }
+
+    onEnter() {
+        this.add.image(590,280,"Candy Road")
+        .setScale(2);
+        this.cameras.main.setBackgroundColor('#CD919E');
+
+        let kitty = this.add.image(1250, 850, 'ice cream');
+        let ice = this.add.image(1250, 700, 'choco')
+        .setScale(0.20);
+
+        this.tweens.add({
+            targets: [kitty, ice],
+            x: -100,
+            delay: 2000,
+            duration: 1500,
+            ease: 'Power2',
+            onComplete: () => kitty.destroy(),
+            onComplete: () => ice.destroy(), 
+        });
+        
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        wake_up.setAlpha(0);
+        let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
+        .setFontSize(this.s *5)
+        .setFontFamily("Tahoma")
+        .setAlpha(0);
+
+        this.tweens.add({
+            targets: [wake_up, text],
+            alpha: {
+                from: 0,
+                to: 0.8
+            },
+            delay: 3700,
+            duration: 2000,
+            onComplete: () => {
+                console.log(wake_up.alpha);
+                if (wake_up.alpha >= 0.8) {
+                    wake_up.setInteractive()
+                      .on('pointerover', () => {
+                        this.showMessage("Wake up...what do you mean?");
+                      })
+                      .on('pointerdown', () => {
+                        this.showMessage("...");
+                        this.tweens.add({
+                            targets: wake_up,
+                            x: '+=' + this.s,
+                            repeat: 2,
+                            yoyo: true,
+                            ease: 'Sine.inOut',
+                            duration: 100,
+                            
+                        });
+                        this.gotoScene('ending');
+                    });
+                    
+                }
+            }
+        });
+     
+    }
+    
+}
+
 class Intro extends Phaser.Scene {
     constructor() {
         super('intro')
@@ -462,7 +607,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Choco,Ending, Outro
-    scene: [Choco,Ending, Outro],
+    scene: [Candy],
     title: "Adventure Game",
 });
 
