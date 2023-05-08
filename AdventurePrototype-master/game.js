@@ -283,7 +283,22 @@ class Road extends AdventureScene {
         .setScale(2);
         this.cameras.main.setBackgroundColor('#CD919E');
 
-        this.add.image(1250, 850, 'ice cream');
+        let icy = this.add.image(1250, 850, 'ice cream')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("MEOW X3");
+            // this.someBoolean = true;
+            this.tweens.add({
+                targets: icy,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2, // Rotate 360 degrees
+            });
+        });
+        
         let candy = this.add.image(1000, 800, 'Jelly Bean')
         .setScale(0.5)
         .setInteractive()
@@ -373,28 +388,22 @@ class Road2 extends AdventureScene {
         .setScale(2);
         this.cameras.main.setBackgroundColor('#CD919E');
 
-        this.add.image(1250, 850, 'ice cream');
-        /*
-        let candy = this.add.image(1000, 800, 'Jelly Bean')
-        .setScale(0.5)
+        let icy = this.add.image(1250, 850, 'ice cream')
         .setInteractive()
-            .on('pointerover', () => this.showMessage("A bowl of candy."))
-            .on('pointerdown', () => {
-            this.showMessage("FREE CANDY!!!");
-            this.gainItem('candy');
+        .on('pointerover', () => {
+            this.showMessage("MEOW X3");
             // this.someBoolean = true;
             this.tweens.add({
-                targets: candy,
+                targets: icy,
                 x: '+=' + this.s,
                 repeat: 2,
                 yoyo: true,
                 ease: 'Sine.inOut',
                 duration: 100,
-                
-                });
-            // this.gotoScene('Choco');
+                rotation: Math.PI * 2, // Rotate 360 degrees
             });
-        */
+        });
+
         this.add.text(this.w *0.02, this.w * 0.49, "We stumble across an ice cream kitty!\nWhy not feed it something?")
         .setFontSize(this.s *2.4)
         .setFontFamily("Tahoma");      
@@ -711,7 +720,6 @@ class Intro extends Phaser.Scene {
     }
 }
 
-// maybe make the background a gradient?
 class Dining_Hall extends Phaser.Scene{
     constructor() {
         super("Dining_Hall");
@@ -719,7 +727,13 @@ class Dining_Hall extends Phaser.Scene{
 
     create(){
         this.cameras.main.setBackgroundColor(0xff00cc);
-    
+
+        // let graphics = this.add.graphics();
+        this.graphics = this.add.graphics();
+        // add shapes
+        this.graphics.fillGradientStyle(0x099773, 0x39B18D, 0x1CA17D,0x26A783, 0.8, 1, 0.3, 0.1);
+        this.graphics.fillRect(0,0, this.scale.width, this.scale.height);
+
         this.add.text(140, 200, "Dining Hall")
             .setFontSize(120)
             .setFontFamily("Tahoma");
@@ -778,6 +792,13 @@ class Ending extends Phaser.Scene {
     }
     create() {
         this.cameras.main.setBackgroundColor("872657");
+        // this.cameras.main.setBackgroundColor(0xff00cc);
+
+        // let graphics = this.add.graphics();
+        this.graphics = this.add.graphics();
+        // add shapes
+        this.graphics.fillGradientStyle(0x099773, 0x39B18D, 0x1CA17D,0x26A783, 0.8, 1, 0.3, 0.1);
+        this.graphics.fillRect(0,0, this.scale.width, this.scale.height);
     
         this.add.text(140, 200, "Dining Hall")
             .setFontSize(120)
@@ -835,7 +856,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Road, Road2,Candy],
+    scene: [Road, Road2],
     title: "Adventure Game",
 });
 
