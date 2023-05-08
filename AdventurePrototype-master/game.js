@@ -94,33 +94,54 @@ class Demo2 extends AdventureScene {
         this.load.image('third', 'green+pink.png');
     }
     onEnter() {
-        // this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
-        //     .setFontSize(this.s * 2)
-        //     .setInteractive()
-        //     .on('pointerover', () => {
-        //         this.showMessage("You've got no other choice, really.");
-        //     })
-        //     .on('pointerdown', () => {
-        //         this.gotoScene('demo1');
-        //     });
-
-        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-        //     .setInteractive()
-        //     .on('pointerover', () => {
-        //         this.showMessage('*giggles*');
-        //         this.tweens.add({
-        //             targets: finish,
-        //             x: this.s + (this.h - 2 * this.s) * Math.random(),
-        //             y: this.s + (this.h - 2 * this.s) * Math.random(),
-        //             ease: 'Sine.inOut',
-        //             duration: 500
-        //         });
-        //     })
-        //     .on('pointerdown', () => this.gotoScene('outro'));
         this.cameras.main.setBackgroundColor('#8B5742');
-        this.add.image(600,300, 'first');
-        this.add.image(400,800, 'second');
-        this.add.image(1200,700, 'third');
+        let first1 = this.add.image(600,300, 'first')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very funny.");
+            this.tweens.add({
+                targets: first1,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
+
+        let second2 = this.add.image(400,800, 'second')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very curious.");
+            this.tweens.add({
+                targets: second2,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
+
+        let third3 = this.add.image(1200,700, 'third')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very lovely.");
+            this.tweens.add({
+                targets: third3,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
 
         let clip = this.add.text(this.w * 0.15, this.w * 0.3, "Ride on their back!")
             .setFontSize(this.s * 2)
@@ -181,9 +202,53 @@ class Dirt extends AdventureScene {
 
     onEnter() {
         this.cameras.main.setBackgroundColor('#8B5742');
-        this.add.image(600,300, 'first');
-        this.add.image(400,800, 'second');
-        this.add.image(1200,700, 'third');
+        let first1 = this.add.image(600,300, 'first')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very funny.");
+            this.tweens.add({
+                targets: first1,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
+
+        let second2 = this.add.image(400,800, 'second')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very curious.");
+            this.tweens.add({
+                targets: second2,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
+
+        let third3 = this.add.image(1200,700, 'third')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage("This gummy worm is very lovely.");
+            this.tweens.add({
+                targets: third3,
+                x: '+=' + this.s,
+                repeat: 2,
+                yoyo: true,
+                ease: 'Sine.inOut',
+                duration: 100,
+                rotation: Math.PI * 2,
+                
+            });
+        });
 
         let clip = this.add.text(this.w * 0.52, this.w * 0.09, "I see some light\nover here.")
             .setFontSize(this.s * 2.6)
@@ -324,7 +389,7 @@ class Road extends AdventureScene {
         .setFontFamily("Tahoma");        
 
         if (this.hasItem('dirt pie cup')) {
-            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xB6C5BE, 1)
             .setInteractive()
             .on('pointerover', () => this.showMessage("It's okay to feed chocolate to this kitty :)"))
             .on('pointerdown', () => {
@@ -346,7 +411,7 @@ class Road extends AdventureScene {
             .setFontSize(this.s *2.4)
             .setFontFamily("Tahoma");
         } else if (this.hasItem('minty cream')) {
-            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xB6C5BE, 1)
             .setInteractive()
             .on('pointerover', () => this.showMessage("Fresh breath!"))
             .on('pointerdown', () => {
@@ -408,7 +473,7 @@ class Road2 extends AdventureScene {
         .setFontSize(this.s *2.4)
         .setFontFamily("Tahoma");      
         
-        let candy_option = this.add.rectangle(700, 750, 300, 300, 0xff0000, 1)
+        let candy_option = this.add.rectangle(700, 750, 300, 300, 0xB6C5BE, 1)
             .setInteractive()
             .on('pointerover', () => this.showMessage("Sweet treat for kitty!"))
             .on('pointerdown', () => {
@@ -431,7 +496,7 @@ class Road2 extends AdventureScene {
             .setFontFamily("Tahoma");
 
         if (this.hasItem('dirt pie cup')) {
-            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            let dirt_option = this.add.rectangle(200, 750, 300, 300, 0xB6C5BE, 1)
             .setInteractive()
             .on('pointerover', () => this.showMessage("It's okay to feed chocolate to this kitty :)"))
             .on('pointerdown', () => {
@@ -453,7 +518,7 @@ class Road2 extends AdventureScene {
             .setFontSize(this.s *2.4)
             .setFontFamily("Tahoma");
         } else if (this.hasItem('minty cream')) {
-            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xff0000, 1)
+            let mint_option = this.add.rectangle(200, 750, 300, 300, 0xB6C5BE, 1)
             .setInteractive()
             .on('pointerover', () => this.showMessage("Fresh breath!"))
             .on('pointerdown', () => {
@@ -507,7 +572,7 @@ class Choco extends AdventureScene {
             onComplete: () => ice.destroy(), 
         });
         
-        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
         let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
         .setFontSize(this.s *5)
@@ -579,7 +644,7 @@ class Mint extends AdventureScene {
             onComplete: () => ice.destroy(), 
         });
         
-        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
         let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
         .setFontSize(this.s *5)
@@ -652,7 +717,7 @@ class Candy extends AdventureScene {
             onComplete: () => ice.destroy(), 
         });
         
-        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xff0000);
+        let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
         let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
         .setFontSize(this.s *5)
@@ -855,8 +920,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    // Intro, Dining_Hall, Demo1, Demo2, Dirt, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Road, Road2],
+    // Intro, Dining_Hall, Demo1, Demo2, Dirt,Encounter, Road, Road2,Mint, Candy, Choco,Ending, Outro
+    scene: [Outro],
     title: "Adventure Game",
 });
 
