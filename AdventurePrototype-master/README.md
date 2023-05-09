@@ -1,45 +1,54 @@
-A simple adventure game by {who?} based on a simple adventure game engine by [Adam Smith](https://github.com/rndmcnlly).
+A simple adventure game by Lynelle Goh based on a simple adventure game engine by [Adam Smith](https://github.com/rndmcnlly).
 
 Code requirements:
-- **4+ scenes based on `AdventureScene`**: unsatisfied (name at least 4 of the classes).
-- **2+ scenes *not* based on `AdventureScene`**: unsatisfied (name the classes).
+- **4+ scenes based on `AdventureScene`**: <br>
+1. Dirt scene
+2. Encounter scene
+3. Road scene
+4. Road2 scene <br>
+- **2+ scenes *not* based on `AdventureScene`**: <br>
+1. Dining_Hall scene
+2. Ending scene
 - **2+ methods or other enhancement added to the adventure game engine to simplify my scenes**:
-    - Enhancement 1: unsatisfied (name the method and explain the use of it).
-    - Enhancement 2: unsatisfied (name the method and explain the use of it).
+    - Enhancement 1: slideOut(targets, delay, duration)<br>
+    This function adds a tween to the targets. The targets slide across the scene.
+    - Enhancement 2: rotate(tagrets)<br>
+    This function adds a tween to the targets. The targets rotate on the screen.
 
 Experience requirements:
-- **4+ locations in the game world**: unsatisfied (name at least 4 of the classes).
-- **2+ interactive objects in most scenes**: unsatisfied (describe two examples)
-- **Many objects have `pointerover` messages**: unsatisfied (describe two examples)
-- **Many objects have `pointerdown` effects**: unsatisfied (describe two examples)
-- **Some objects are themselves animated**: unsatisfied (describe two examples)
+- **4+ locations in the game world**: <br>
+1. Dirt
+2. Road
+3. Peppermint Patties Tower
+4. Dining Hall
+- **2+ interactive objects in most scenes**: <br>
+1. At the entranceway, players can select either two options for whichever path they want to take.
+2. In the dirt, players have the option of petting the gummy worms or riding on their backs.
+- **Many objects have `pointerover` messages**: 
+1. At the entranceway, players can hover over the options and see small messages about each choice.
+2. When encountering the peppermint patties tower, messages appear in both options and may influence players in their choices.
+- **Many objects have `pointerdown` effects**: <br>
+1. At the entranceway, players can click on the different options to be taken elsewhere.
+2. Almost all options will shake when clicked on.
+- **Some objects are themselves animated**:<br>
+1. Ice cream kitty will slide across the screen.
+2. Gummy worms will rotate when the pointer is over them.
 
-Asset sources:
-- (For each image/audio/video asset used, describe how it was created. What tool did you use to create it? Was it based on another work? If so, how did you change it, and where can we learn more about the original work for comparison? Use [Markdown link syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links).)
+Asset sources:<br>
+For all images I got online, I edited them using this [free website on the web](https://www.befunky.com/create/).<br>
+For all art that I did myself, I drew them using this [free website on the web](https://sketchpad.app/en/).<br>
+1. Candy Road.png - I got it [online](https://www.pxfuel.com/en/desktop-wallpaper-nphdo) and edited it by blurring and adding brightness.
+2. Candyland.png - I got it [online](https://wallpapersafari.com/candyland-background/) and edited it by blurring and adding brightness.
+3. Chocolate.png - I drew it myself using the crayon option.
+4. cotton candy.png - I drew it myself using the crayon option.
+5. first gummy worm.png - I drew it myself using the crayon option.
+6. green+pink.png - I drew it myself using the crayon option.
+7. Helena's gummy worm.png - I drew it myself using the crayon option.
+8. Ice cream Cat.png - I got it [online](https://tmnt2012series.fandom.com/wiki/Ice_Cream_Kitty) and edited it by blurring and adding brightness. I understand that this character is from a TV show, and I was inspired by that character to add it to my Candyland game.
+9. Jelly Bean Bowl.png - I got it [online](http://www.clker.com/clipart-jelly-bean-bowl.html) and edited it by blurring and adding brightness.
+10. peppermint.png - I drew it myself using the crayon option.
+11. patty.png - I got it [online](https://www.stickpng.com/img/food/peppermint/peppermint-patties) and edited it by blurring.
 
 Code sources:
-- `adventure.js` and `index.html` were created for this project [Adam Smith](https://github.com/rndmcnlly) and edited by Lynelle Goh.
+- `adventure.js` and `index.html` were created for this project by [Adam Smith](https://github.com/rndmcnlly) and edited by Lynelle Goh.
 - `game.js` was sketched by [Adam Smith](https://github.com/rndmcnlly) and rewritten by Lynelle Goh.
-
-used these links to create background image 1:
-https://wallpapersafari.com/candyland-background/
-https://www.befunky.com/create/
-
-used these links to create background image 2:
-https://www.pxfuel.com/en/desktop-wallpaper-nphdo
-https://www.befunky.com/create/
-
-used these links to make image:
-https://tmnt2012series.fandom.com/wiki/Ice_Cream_Kitty
-https://www.befunky.com/create/
-
-used these links for jelly bean:
-http://www.clker.com/clipart-jelly-bean-bowl.html
-https://www.befunky.com/create/\
-
-chocolate ice cream:
-https://creazilla.com/nodes/30348-chocolate-ice-cream-cone-clipart
-
-
-used this link to draw the gummy worms:
-https://sketchpad.app/en/
