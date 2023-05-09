@@ -99,48 +99,31 @@ class Demo2 extends AdventureScene {
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very funny.");
-            this.tweens.add({
-                targets: first1,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
+            this.rotate(first1);
+            // this.tweens.add({
+            //     targets: first1,
+            //     x: '+=' + this.s,
+            //     repeat: 2,
+            //     yoyo: true,
+            //     ease: 'Sine.inOut',
+            //     duration: 100,
+            //     rotation: Math.PI * 2,
                 
-            });
+            // });
         });
 
         let second2 = this.add.image(400,800, 'second')
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very curious.");
-            this.tweens.add({
-                targets: second2,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
-                
-            });
+            this.rotate(second2);
         });
 
         let third3 = this.add.image(1200,700, 'third')
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very lovely.");
-            this.tweens.add({
-                targets: third3,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
-                
-            });
+            this.rotate(third3);
         });
 
         let clip = this.add.text(this.w * 0.15, this.w * 0.3, "Ride on their back!")
@@ -206,48 +189,21 @@ class Dirt extends AdventureScene {
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very funny.");
-            this.tweens.add({
-                targets: first1,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
-                
-            });
+            this.rotate(first1);
         });
 
         let second2 = this.add.image(400,800, 'second')
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very curious.");
-            this.tweens.add({
-                targets: second2,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
-                
-            });
+            this.rotate(second2);
         });
 
         let third3 = this.add.image(1200,700, 'third')
         .setInteractive()
         .on('pointerover', () => {
             this.showMessage("This gummy worm is very lovely.");
-            this.tweens.add({
-                targets: third3,
-                x: '+=' + this.s,
-                repeat: 2,
-                yoyo: true,
-                ease: 'Sine.inOut',
-                duration: 100,
-                rotation: Math.PI * 2,
-                
-            });
+            this.rotate(third3);
         });
 
         let clip = this.add.text(this.w * 0.52, this.w * 0.09, "I see some light\nover here.")
@@ -914,7 +870,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt,Encounter, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Candy],
+    scene: [Demo2],
     title: "Adventure Game",
 });
 
