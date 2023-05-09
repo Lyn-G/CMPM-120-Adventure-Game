@@ -225,7 +225,7 @@ class Dirt extends AdventureScene {
                 this.gotoScene('Road');
             });
 
-        let explain = this.add.text(this.w *0.1, this.w * 0.5, "That was fun! I think i see a hole over there!")
+        let explain = this.add.text(this.w *0.1, this.w * 0.5, "That was fun! I think I see a hole over there!")
             .setFontSize(this.s *2.9)
             .setFontFamily("Tahoma")
     }
@@ -870,7 +870,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt,Encounter, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Demo2],
+    scene: [Intro, Dining_Hall, Demo1, Demo2, Dirt,Encounter, Road, Road2,Mint, Candy, Choco,Ending, Outro],
     title: "Adventure Game",
 });
 
