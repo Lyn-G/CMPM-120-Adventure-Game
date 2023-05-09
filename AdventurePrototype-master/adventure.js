@@ -153,4 +153,17 @@ class AdventureScene extends Phaser.Scene {
     onEnter() {
         console.warn('This AdventureScene did not implement onEnter():', this.constructor.name);
     }
+
+    slideOut(targets, delay, duration) {
+        this.tweens.add({
+          targets: targets,
+          x: -100,
+          delay: delay,
+          duration: duration,
+          ease: 'Power2',
+          onComplete: () => {
+            targets.forEach(target => target.destroy());
+          }
+        });
+    }
 }

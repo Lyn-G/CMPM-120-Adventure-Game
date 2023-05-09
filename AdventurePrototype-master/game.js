@@ -562,15 +562,7 @@ class Choco extends AdventureScene {
         let ice = this.add.image(1250, 700, 'choco')
         .setScale(0.25);
 
-        this.tweens.add({
-            targets: [kitty, ice],
-            x: -100,
-            delay: 2000,
-            duration: 1500,
-            ease: 'Power2',
-            onComplete: () => kitty.destroy(),
-            onComplete: () => ice.destroy(), 
-        });
+        this.slideOut([ice,kitty], 2000, 1500);
         
         let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
@@ -634,16 +626,17 @@ class Mint extends AdventureScene {
         let ice = this.add.image(1265, 680, 'm')
         .setScale(0.25);
 
-        this.tweens.add({
-            targets: [kitty, ice],
-            x: -100,
-            delay: 2000,
-            duration: 1500,
-            ease: 'Power2',
-            onComplete: () => kitty.destroy(),
-            onComplete: () => ice.destroy(), 
-        });
-        
+        // this.tweens.add({
+        //     targets: [kitty, ice],
+        //     x: -100,
+        //     delay: 2000,
+        //     duration: 1500,
+        //     ease: 'Power2',
+        //     onComplete: () => kitty.destroy(),
+        //     onComplete: () => ice.destroy(), 
+        // });
+        this.slideOut([ice,kitty], 2000, 1500);
+
         let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
         let text = this.add.text(this.w *0.225, this.w * 0.425, "WAKE UP!!!")
@@ -706,16 +699,16 @@ class Candy extends AdventureScene {
         let ice = this.add.image(1250, 700, 'cotton')
         .setScale(0.20);
 
-        // slideOut([kitty, ice], 2000, 1500);
-        this.tweens.add({
-            targets: [kitty, ice],
-            x: -100,
-            delay: 2000,
-            duration: 1500,
-            ease: 'Power2',
-            onComplete: () => kitty.destroy(),
-            onComplete: () => ice.destroy(), 
-        });
+        this.slideOut([kitty, ice], 2000, 1500);
+        // this.tweens.add({
+        //     targets: [kitty, ice],
+        //     x: -100,
+        //     delay: 2000,
+        //     duration: 1500,
+        //     ease: 'Power2',
+        //     onComplete: () => kitty.destroy(),
+        //     onComplete: () => ice.destroy(), 
+        // });
         
         let wake_up = this.add.rectangle(this.w *0.35, this.w * 0.45, 550, 300, 0xB6C5BE);
         wake_up.setAlpha(0);
@@ -921,7 +914,7 @@ const game = new Phaser.Game({
         height: 1080
     },
     // Intro, Dining_Hall, Demo1, Demo2, Dirt,Encounter, Road, Road2,Mint, Candy, Choco,Ending, Outro
-    scene: [Outro],
+    scene: [Candy],
     title: "Adventure Game",
 });
 
